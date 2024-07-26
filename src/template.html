@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="h-full m-0" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -7,12 +7,83 @@
   <title>Document</title>
 </head>
 
-<body>
+<body class="h-full m-0 flex flex-col">
   <header>
     <h1 class="text-4xl text-center m-4">
-      Weather App
+      Weather
     </h1>
+    <div class="w-full bg-slate-100 flex justify-center p-3"><input type="search"
+        class="rounded-md outline outline-slate-300" name="city-search" id="city-search-input">
+    </div>
   </header>
+  <main class="flex-1 m-0 bg-slate-100">
+    <div class="weather-pane-container h-full flex items-stretch">
+      <div class="weather-pane flex flex-col rounded-lg bg-slate-300">
+        <div class="image-container"></div>
+        <div class="temp-container flex">
+          <div class="min-temp-display">0</div>
+          <div class="current-temp-display">69</div>
+          <div class="max-temp-display">100</div>
+        </div>
+        <div class="other-info-container"></div>
+      </div>
+      <div class="weather-pane flex flex-col rounded-lg bg-slate-300">
+        <div class="image-container"></div>
+        <div class="temp-container flex">
+          <div class="min-temp-display">0</div>
+          <div class="current-temp-display">69</div>
+          <div class="max-temp-display">100</div>
+        </div>
+        <div class="other-info-container"></div>
+      </div>
+      <div class="weather-pane flex flex-col rounded-lg bg-slate-300">
+        <div class="image-container"></div>
+        <div class="temp-container flex">
+          <div class="min-temp-display">0</div>
+          <div class="current-temp-display">69</div>
+          <div class="max-temp-display">100</div>
+        </div>
+        <div class="other-info-container"></div>
+      </div>
+      <div class="weather-pane flex-1 focused-weather-pane flex flex-col rounded-lg bg-slate-300">
+        <div class="image-container"></div>
+        <div class="temp-container flex">
+          <div class="min-temp-display">0</div>
+          <div class="current-temp-display">69</div>
+          <div class="max-temp-display">100</div>
+        </div>
+        <div class="other-info-container"></div>
+      </div>
+      <div class="weather-pane flex flex-col rounded-lg bg-slate-300">
+        <div class="image-container"></div>
+        <div class="temp-container flex">
+          <div class="min-temp-display">0</div>
+          <div class="current-temp-display">69</div>
+          <div class="max-temp-display">100</div>
+        </div>
+        <div class="other-info-container"></div>
+      </div>
+      <div class="weather-pane flex flex-col rounded-lg bg-slate-300">
+        <div class="image-container"></div>
+        <div class="temp-container flex">
+          <div class="min-temp-display">0</div>
+          <div class="current-temp-display">69</div>
+          <div class="max-temp-display">100</div>
+        </div>
+        <div class="other-info-container"></div>
+      </div>
+      <div class="weather-pane flex flex-col rounded-lg bg-slate-300">
+        <div class="image-container"></div>
+        <div class="temp-container flex">
+          <div class="min-temp-display">0</div>
+          <div class="current-temp-display">69</div>
+          <div class="max-temp-display">100</div>
+        </div>
+        <div class="other-info-container"></div>
+      </div>
+    </div>
+  </main>
+  <div class="footer h-4"></div>
 </body>
 
 </html>
