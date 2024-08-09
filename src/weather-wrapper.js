@@ -18,6 +18,11 @@ class WeatherWrapper {
     this.week = dataObject.days;
     console.log('updated');
   }
+
+  setCity(newCity) {
+    this.api.setCity(newCity);
+    this.reload();
+  }
 }
 
 export default WeatherWrapper;

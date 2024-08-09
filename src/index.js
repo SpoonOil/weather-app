@@ -18,35 +18,57 @@ const images = importAll(
 // code
 const weather = new WeatherWrapper(new WeatherAPI());
 
+function getPanes() {
+  const allPanes = Array.from(document.querySelectorAll(".weather-pane"));
+
+  allPanes.forEach((pane) => {
+    pane.tempDisplay = pane.querySelector(".current-temp-display");
+    pane.minTempDisplay = pane.querySelector(".min-temp-display");
+    pane.maxTempDisplay = pane.querySelector(".max-temp-display");
+    pane.descriptionDisplay = pane.querySelector(".weather-description")
+    pane.iconDisplay = pane.querySelector("img")
+  });
+
+  return allPanes;
+}
+
+const panes = getPanes()
+
 function updateDisplay() {
   weather.reload().then(() => {
-    (function renderToday() {
-      let today = weather.week[0];
-      console.log(today);
+    /**
+      * renders a single pane's information
+      * @param {number} index of week
+      */
+    function renderDay(index) {
+      let pane = panes[index]
+      let today = weather.week[index];
 
-      const tempDisplay = document.querySelector(
-        ".focused-weather-pane .temp-container .current-temp-display",
-      );
-      const minTempDisplay = document.querySelector(
-        ".focused-weather-pane .temp-container .min-temp-display",
-      );
-      const maxTempDisplay = document.querySelector(
-        ".focused-weather-pane .temp-container .max-temp-display",
-      );
+      pane.iconDisplay.src = images[today.icon + ".png"];
+      pane.descriptionDisplay.innerText = today.description;
+      pane.tempDisplay.innerText = today.temp;
 
-      const descriptionDisplay = document.querySelector(
-        ".focused-weather-pane .other-info-container .weather-description",
-      );
+      //round these
+      pane.minTempDisplay.innerText = today.tempmin.toFixed(0);
+      pane.maxTempDisplay.innerText = today.tempmax.toFixed(0);
+    }
 
-      const iconDisplay = document.querySelector(".focused-weather-pane img");
-
-      iconDisplay.src = images[today.icon + ".png"];
-      descriptionDisplay.innerText = today.description;
-      tempDisplay.innerText = today.temp;
-      minTempDisplay.innerText = today.tempmin;
-      maxTempDisplay.innerText = today.tempmax;
-    })();
+    for (let paneIndex in panes) {
+      renderDay(paneIndex)
+    }
   });
 }
 
 updateDisplay();
+
+const search = document.getElementById("city-search-input");
+
+const searchButton = document.getElementById("search-button");
+
+searchButton.addEventListener("click", () => {
+  const newCity = search.value;
+  console.log(weather);
+
+  weather.setCity(newCity);
+  updateDisplay();
+});
